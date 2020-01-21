@@ -9,18 +9,33 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var UIIMAGEVIEW: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     @IBAction func messagebuttonpressed(_ sender: UIButton) {
-    
-        messageLabel.text = "You are awesome!"
-        UIIMAGEVIEW.image = UIImage(named: "IMG_7743")
+        
+        let awesomeMessage="You Are Awesome!"
+        let greatMessage = "You Are Great!"
+        let bombMessage = "You Are Da Bomb"
+        
+        if messageLabel.text == awesomeMessage {
+            messageLabel.text = greatMessage
+            UIIMAGEVIEW.image = UIImage(named: "IMG_7743")
+            
+        } else if messageLabel.text==greatMessage  {
+            messageLabel.text = bombMessage
+            UIIMAGEVIEW.image = UIImage(named: "image0")
+        }else {
+            messageLabel.text = awesomeMessage
+            UIIMAGEVIEW.image = UIImage(named: "IMG_3725")
+            
+            
+       
     }
-    
 }
 
+}
