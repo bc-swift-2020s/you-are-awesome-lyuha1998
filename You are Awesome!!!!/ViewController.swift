@@ -13,8 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var UIIMAGEVIEW: UIImageView!
     
-    var imageNumber=-1
-    var messageNumber=-1
+    var imageNumber = -1
+    var messageNumber = -1
     let totalnumberofImages = 6
     
     
@@ -43,12 +43,14 @@ class ViewController: UIViewController {
         messageLabel.text = messages[messageNumber]
         
         
+        
         var newimagerynumber : Int
         
        repeat
         {
           newimagerynumber = Int.random(in: 0...totalnumberofImages)
-        } while imageNumber == newMessgageNumber
+            
+        } while imageNumber == newimagerynumber
         
         
         imageNumber = newMessgageNumber
@@ -56,3 +58,4 @@ class ViewController: UIViewController {
 }
 
 }
+  
