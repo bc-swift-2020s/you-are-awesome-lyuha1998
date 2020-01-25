@@ -13,8 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var UIIMAGEVIEW: UIImageView!
     
-    var imageNumber=0
-    var messageNumber=0
+    var imageNumber=-1
+    var messageNumber=-1
     let totalnumberofImages = 6
     
     
@@ -32,44 +32,27 @@ class ViewController: UIViewController {
                         "You are Amazing!"]
 
         
+        var newMessgageNumber : Int
         
-        messageLabel.text=(messages[Int.random(in:0...messages.count-1)])
-       // messageNumber += 1
-       // if messageNumber == messages.count
-        // {messageNumber=0
+        repeat  {
+            newMessgageNumber = Int.random(in:0...messages.count-1)
             
-        //}
+        } while newMessgageNumber == messageNumber
+        
+      messageNumber = newMessgageNumber
+        messageLabel.text = messages[messageNumber]
         
         
+        var newimagerynumber : Int
+        
+       repeat
+        {
+          newimagerynumber = Int.random(in: 0...totalnumberofImages)
+        } while imageNumber == newMessgageNumber
         
         
-
-        UIIMAGEVIEW.image = UIImage(named:"image\(Int.random(in: 0...totalnumberofImages))")
-    //    imageNumber = imageNumber+1
-   //     if imageNumber == 6 {
- //           imageNumber=0
-        }
-        
-        
-        
-     
-//
-//
-//
-//        if messageLabel.text == awesomeMessage {
-//            messageLabel.text = greatMessage
-//            UIIMAGEVIEW.image = UIImage(named: "image2")
-//
-//        } else if messageLabel.text==greatMessage  {
-//            messageLabel.text = bombMessage
-//            UIIMAGEVIEW.image = UIImage(named: "image0")
-//        }else {
-//            messageLabel.text = awesomeMessage
-//            UIIMAGEVIEW.image = UIImage(named: "image1")
-//
-//
-//
-//    }
+        imageNumber = newMessgageNumber
+        UIIMAGEVIEW.image = UIImage(named: "image\(imageNumber)")
 }
 
-
+}
