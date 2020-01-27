@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+
 
 class ViewController: UIViewController {
     
@@ -16,7 +18,7 @@ class ViewController: UIViewController {
     var imageNumber = -1
     var messageNumber = -1
     let totalnumberofImages = 6
-    
+    var Audioplayer = AVAudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,30 +34,52 @@ class ViewController: UIViewController {
                         "You are Amazing!"]
 
         
-        var newMessgageNumber : Int
+      //  var newMessgageNumber : Int
         
-        repeat  {
-            newMessgageNumber = Int.random(in:0...messages.count-1)
-            
-        } while newMessgageNumber == messageNumber
-        
-      messageNumber = newMessgageNumber
-        messageLabel.text = messages[messageNumber]
+        var newMessage = messages[Int.random(in: 0...messages.count-1)]
+        while messageLabel.text == newMessage {
+            newMessage = messages[Int.random(in: 0...messages.count-1)]
+        }
+        messageLabel.text = newMessage
         
         
         
-        var newimagerynumber : Int
-        
-       repeat
-        {
-          newimagerynumber = Int.random(in: 0...totalnumberofImages)
-            
+        var newimagerynumber: Int = 0
+        repeat
+          {newimagerynumber = Int.random(in:0...totalnumberofImages)
+                
         } while imageNumber == newimagerynumber
-        
-        
-        imageNumber = newMessgageNumber
+            
+        imageNumber = newimagerynumber
         UIIMAGEVIEW.image = UIImage(named: "image\(imageNumber)")
-}
+        
+        
+        
+        
+                if let sound = NSDataAsset(name:"sound0") {
+                    do {
+                        try Audioplayer = AVAudioPlayer(data: sound.data)
+                        Audioplayer.play()
+                        
+                    } catch {
+                        print("Error! Could not iniatialize AVAudioPlayer object")
+                    }}
+                    
+                    else { print("Could not read data from file sound0")
+                        
+                        
+                        
+                }
+            
+        }
+  
 
-}
+                
+        }
+    
+    
+    
+    
+
+
   
