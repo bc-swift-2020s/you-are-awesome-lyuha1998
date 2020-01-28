@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     
     var imageNumber = -1
     var messageNumber = -1
+    var soundnumber = -1
+    var totalNumberofSounds = 6
     let totalnumberofImages = 6
     var Audioplayer = AVAudioPlayer()
     
@@ -24,62 +26,94 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    
+    //good place to start a function!!!!
+    
+    
+    func randomGenerator (initialnumber:Int, endinglimit:Int) -> Int {
+        var newnumber: Int
+        repeat
+        {newnumber = Int.random(in:0...endinglimit)
+        } while initialnumber == newnumber
+        return newnumber
+    }
+    
+    
+    func playSound (name: String) {
+        if let sound = NSDataAsset(name:name) {
+            do {
+                try Audioplayer = AVAudioPlayer(data: sound.data)
+                Audioplayer.play()
+                
+            } catch {
+                print("Error! Could not iniatialize AVAudioPlayer object")
+            }}
+            
+        else { print("Could not read data from file sound0")}}
+    
+    
+    //command A
+    //
+    
+    
+    
+    
     @IBAction func messagebuttonpressed(_ sender: UIButton) {
-       
         let messages = ["You Are Awesome!",
                         "You Are Great",
                         "You Are Fabulous!",
                         "You are in CSOM Business class!!!!",
                         "You are going to work for Facebook",
                         "You are Amazing!"]
-
         
-      //  var newMessgageNumber : Int
+        messageNumber = randomGenerator(initialnumber:messageNumber, endinglimit:5)
+        messageLabel.text = messages[messageNumber]
         
-        var newMessage = messages[Int.random(in: 0...messages.count-1)]
-        while messageLabel.text == newMessage {
-            newMessage = messages[Int.random(in: 0...messages.count-1)]
-        }
-        messageLabel.text = newMessage
-        
-        
-        
-        var newimagerynumber: Int = 0
-        repeat
-          {newimagerynumber = Int.random(in:0...totalnumberofImages)
-                
-        } while imageNumber == newimagerynumber
-            
-        imageNumber = newimagerynumber
+        imageNumber = randomGenerator  (initialnumber:imageNumber, endinglimit:totalnumberofImages-1)
         UIIMAGEVIEW.image = UIImage(named: "image\(imageNumber)")
         
+        soundnumber = randomGenerator (initialnumber:soundnumber, endinglimit:totalNumberofSounds-1)
+        playSound(name: "sound\(soundnumber)")
         
         
         
-                if let sound = NSDataAsset(name:"sound0") {
-                    do {
-                        try Audioplayer = AVAudioPlayer(data: sound.data)
-                        Audioplayer.play()
-                        
-                    } catch {
-                        print("Error! Could not iniatialize AVAudioPlayer object")
-                    }}
-                    
-                    else { print("Could not read data from file sound0")
-                        
-                        
-                        
-                }
-            
-        }
-  
+        //   messageLabel.text = newMessage
+        
+        
+        
+        //    var newimagerynumber: Int = 0
+        //  repeat
+        //    {newimagerynumber = Int.random(in:0...totalnumberofImages)
+        
+        //   } while imageNumber == newimagerynumber
+        
+        //    imageNumber = newimagerynumber
+        
+        
+        
+        
+        
+        
+        //    var newSoundNumber: Int = 0
+        //      repeat
+        //        {newSoundNumber = Int.random(in:0...totalNumberofSounds-1)
+        
+        //     } while soundnumber == newSoundNumber
+        
+        //    soundnumber = newSoundNumber
+        
+        
+        
+    }
+    
+    
+    
+}
 
-                
-        }
-    
-    
-    
-    
 
 
-  
+//command A
+//CONTROLI
+
+
+
