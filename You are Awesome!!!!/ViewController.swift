@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     var messageNumber = -1
     var soundnumber = -1
     var totalNumberofSounds = 6
-    let totalnumberofImages = 6
+    let totalnumberofImages = 7
     var Audioplayer = AVAudioPlayer()
     
     override func viewDidLoad() {
